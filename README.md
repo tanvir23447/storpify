@@ -1,60 +1,73 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Maison Elora — Premium Beauty & Care
+### Complete Enterprise E-commerce Ecosystem for Imported Luxury Beauty, Skincare, Perfumes & Chocolates
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Maison Elora Brand](/frontend/public/images/brand/maison-elora-logo.jpg)
 
-## About Laravel
+**Maison Elora** is a complete, secure, production-grade e-commerce application built for Bangladesh's luxury beauty and care market. It features a bilingual storefront (English & Bengali), an interactive Super Admin Dashboard, FEFO batch-based inventory and expiry management, Bangladesh MFS payment workflows (Cash on Delivery, bKash, Nagad, Rocket), and a dynamic brand identity and logo management engine.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🌟 Key Highlights
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. **Bespoke Luxury Visual Identity**:
+   - Blush Pink (`#F6D7D9`), Soft Ivory (`#FFF9F2`), Champagne Gold (`#C9A45C`), Rose Nude (`#C68B91`), Deep Charcoal (`#292426`).
+   - High-fidelity recreation of the Maison Elora design reference.
+   - Dual-language support (English & Bengali: `English | বাংলা`).
 
-## Learning Laravel
+2. **Dynamic Logo & Brand Identity Management (Section 1)**:
+   - Super Admin module at `Settings → Brand Identity & Logo Management`.
+   - Admin can upload, preview, replace, and restore:
+     - Primary Website Logo
+     - Compact Header Logo
+     - Mobile Logo
+     - Footer Logo
+     - Admin Dashboard Logo
+     - Favicon
+     - Open Graph / Social Sharing Image
+   - Changes propagate across the entire website instantly without editing source code.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+3. **Complete Shopping System**:
+   - Shop by category: Skincare, Cosmetics, Perfumes, Chocolates.
+   - Luxury product cards with discount tags, original strikethrough prices in BDT (৳), wishlist toggle, quick add to cart.
+   - Rich product details with cosmetic attributes (ingredients, skin type, country of origin, batch number, expiry date).
+   - Interactive slide-out cart drawer with instant quantity controls and coupon codes.
+   - Comprehensive checkout with Bangladesh divisions, districts, upazilas, delivery notes, and configurable shipping rules.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+4. **Bangladesh Payment Methods**:
+   - Cash on Delivery (COD)
+   - Manual bKash, Nagad, Rocket with step-by-step merchant number display, transaction ID input, and receipt validation.
+   - Admin payment verification workflow (Pending, Submitted, Verified, Rejected).
 
-## Laravel Sponsors
+5. **Advanced Inventory & Expiry Management (FEFO)**:
+   - Batch-level tracking: batch numbers, manufacturing dates, expiry dates, supplier costs.
+   - First Expiry, First Out (FEFO) automated allocation.
+   - Near-expiry (<90 days) and low-stock (<5 units) automated alerts.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+6. **Super Admin Dashboard**:
+   - 24+ administrative views including Sales Analytics, Products, Categories, Inventory & Batches, Orders, Payments, Customers, Coupons, CMS Banners, Shipping, and Brand Settings.
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🚀 Getting Started
 
-## Contributing
+Read [ENVIRONMENT_SETUP.md](./ENVIRONMENT_SETUP.md) for full instructions.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```powershell
+# 1. Install dependencies
+cd frontend
+npm install
 
-## Code of Conduct
+# 2. Run locally
+npm run dev
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Storefront: [http://localhost:3000](http://localhost:3000)  
+Super Admin: [http://localhost:3000/admin](http://localhost:3000/admin)
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-"# storpify" 
+## 🛡️ Security & Architecture
+- Supabase PostgreSQL with 38+ enterprise tables.
+- Row Level Security (RLS) enabled on all tables.
+- Server Actions & Zod validation.
+- Zero credentials leak: Safe local fallback mock adapter when live credentials are absent.

@@ -1,0 +1,66 @@
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Next.js build output & caches
+.next/
+node_modules/
+dist/
+build/
+coverage/
+playwright-report/
+test-results/
+
+# Log files & certificates
+*.log
+*.pem
+*.key
+secrets/
+private/
+
+# System and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.phpunit.result.cache
+
+# Python cache & compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Large model weights & AI checkpoints (>100MB exceeds GitHub limits)
+models/checkpoints/
+*.onnx
+*.bin
+*.pt
+*.pth
+*.safetensors
+*.exe
+*.dll
+
+# Storage & output artifacts
+storage/outputs/
+storage/*.db
+storage/*.sqlite
+storage/logs/*
+!storage/logs/.gitkeep
+
+# Laravel legacy ignores (if kept)
+/vendor
+/storage/*.key
+/storage/pail
+Homestead.json
+Homestead.yaml
+storage/uploads/*
+storage/temp/*
+!storage/uploads/.gitkeep
+!storage/temp/.gitkeep

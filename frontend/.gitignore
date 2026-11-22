@@ -1,0 +1,30 @@
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Next.js build output & caches
+.next/
+node_modules/
+dist/
+build/
+coverage/
+playwright-report/
+test-results/
+
+# Log files & certificates
+*.log
+*.pem
+*.key
+secrets/
+private/
+
+# System and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

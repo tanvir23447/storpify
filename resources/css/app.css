@@ -1,0 +1,20 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --color-brand-navy: #17152B;
+    --color-brand-primary: #7651E8;
+    --color-brand-secondary: #8B5CF6;
+    --color-brand-lavender: #A78BFA;
+    --color-brand-soft: #F5F3FF;
+    --color-brand-dark: #121024;
+    --color-brand-card: #FFFFFF;
+}
+
+[x-cloak] {
+    display: none !important;
+}

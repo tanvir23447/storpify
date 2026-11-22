@@ -71,3 +71,4 @@ Super Admin: [http://localhost:3000/admin](http://localhost:3000/admin)
 - Row Level Security (RLS) enabled on all tables.
 - Server Actions & Zod validation.
 - Zero credentials leak: Safe local fallback mock adapter when live credentials are absent.
+"# storpify" 

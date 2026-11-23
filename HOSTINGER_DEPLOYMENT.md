@@ -163,8 +163,60 @@ For security, hardcoded default admin passwords have been completely removed. Yo
 
 ### Option A: From Supabase Dashboard SQL Editor (Recommended)
 1. Open your **Supabase Dashboard** ➜ **SQL Editor**.
-2. Run the provided Super Admin creation SQL script (replace email and password with your desired values).
-3. The script automatically hashes the password using native Bcrypt and grants full Super Admin RBAC privileges.
+2. Run the provided Super Admin creation SQL script:
+
+```sql
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA extensions;
+
+DO $$
+DECLARE
+    v_name VARCHAR := 'Super Administrator';              -- Admin Name
+    v_email VARCHAR := 'admin@storpify.com';              -- Your Admin Email
+    v_password VARCHAR := 'YourSecurePasswordHere123!';   -- Your Secret Password
+    v_user_id BIGINT;
+    v_role_id BIGINT;
+    v_hash VARCHAR;
+BEGIN
+    v_hash := overlay(extensions.crypt(v_password, extensions.gen_salt('bf', 12)) placing '$2y$' from 1 for 4);
+
+    SELECT id INTO v_role_id FROM roles WHERE slug = 'super_admin';
+    IF v_role_id IS NULL THEN
+        INSERT INTO roles (name, slug, description, is_system, created_at, updated_at)
+        VALUES ('Super Administrator', 'super_admin', 'Full platform control', true, NOW(), NOW())
+        RETURNING id INTO v_role_id;
+    END IF;
+
+    SELECT id INTO v_user_id FROM users WHERE email = v_email;
+    IF v_user_id IS NOT NULL THEN
+        UPDATE users
+        SET name = v_name,
+            password = v_hash,
+            role = 'super_admin',
+            status = 'active',
+            email_verified_at = COALESCE(email_verified_at, NOW()),
+            updated_at = NOW()
+        WHERE id = v_user_id;
+    ELSE
+        INSERT INTO users (name, email, password, role, status, email_verified_at, created_at, updated_at)
+        VALUES (v_name, v_email, v_hash, 'super_admin', 'active', NOW(), NOW(), NOW())
+        RETURNING id INTO v_user_id;
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM user_roles WHERE user_id = v_user_id AND role_id = v_role_id) THEN
+        INSERT INTO user_roles (user_id, role_id, created_at, updated_at)
+        VALUES (v_user_id, v_role_id, NOW(), NOW());
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM user_profiles WHERE user_id = v_user_id) THEN
+        INSERT INTO user_profiles (user_id, bio, city, country, created_at, updated_at)
+        VALUES (v_user_id, 'Lead Administrator & Founder of STORPIFY', 'Dhaka', 'Bangladesh', NOW(), NOW());
+    END IF;
+
+    RAISE NOTICE 'Super Admin setup completed successfully for %!', v_email;
+END $$;
+```
+
+3. The script automatically hashes the password using native Bcrypt ($2y$) and grants full Super Admin RBAC privileges.
 
 ### Option B: Via Hostinger SSH / Terminal
 ```bash

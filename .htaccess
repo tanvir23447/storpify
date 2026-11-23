@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    DirectoryIndex public/index.php index.php
+
+    # Handle root domain requests directly to public/index.php
+    RewriteRule ^$ public/index.php [L]
+
+    # If the request already starts with /public/, do not rewrite
+    RewriteCond %{REQUEST_URI} ^/public/ [NC]
+    RewriteRule ^ - [L]
+
+    # Route all other requests into the public folder
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>

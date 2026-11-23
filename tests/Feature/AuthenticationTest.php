@@ -72,11 +72,17 @@ class AuthenticationTest extends TestCase
 
     public function test_staff_users_are_redirected_to_admin_dashboard_on_login(): void
     {
-        $admin = User::where('email', 'admin@storpify.com')->first();
+        $admin = User::factory()->create([
+            'name' => 'Super Admin',
+            'email' => 'admin_test@storpify.com',
+            'password' => Hash::make('AdminSecret@2026!'),
+            'role' => 'super_admin',
+            'status' => 'active',
+        ]);
 
         $response = $this->post('/login', [
-            'email' => 'admin@storpify.com',
-            'password' => 'Storpify@2026!',
+            'email' => 'admin_test@storpify.com',
+            'password' => 'AdminSecret@2026!',
         ]);
 
         $this->assertAuthenticated();

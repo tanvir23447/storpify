@@ -70,11 +70,15 @@ class RolesAndPermissionsSeeder extends Seeder
         ])->pluck('id');
         $moderatorRole->permissions()->sync($modPerms);
 
-        // 3. Create Default Accounts
+        // 3. Create System Roles & Seed Super Admin (if configured)
+        $superAdminPassword = env('SUPER_ADMIN_PASSWORD') 
+            ? Hash::make(env('SUPER_ADMIN_PASSWORD')) 
+            : Hash::make(\Illuminate\Support\Str::random(32));
+
         // Super Admin
-        $superAdmin = User::firstOrCreate(['email' => 'admin@storpify.com'], [
+        $superAdmin = User::firstOrCreate(['email' => env('SUPER_ADMIN_EMAIL', 'admin@storpify.com')], [
             'name' => 'Super Administrator',
-            'password' => Hash::make('Storpify@2026!'),
+            'password' => $superAdminPassword,
             'phone' => '01700000001',
             'role' => 'super_admin',
             'status' => 'active',
@@ -91,7 +95,7 @@ class RolesAndPermissionsSeeder extends Seeder
         // General Admin
         $generalAdmin = User::firstOrCreate(['email' => 'manager@storpify.com'], [
             'name' => 'Store Operations Manager',
-            'password' => Hash::make('Storpify@2026!'),
+            'password' => Hash::make(\Illuminate\Support\Str::random(32)),
             'phone' => '01700000002',
             'role' => 'general_admin',
             'status' => 'active',
@@ -107,7 +111,7 @@ class RolesAndPermissionsSeeder extends Seeder
         // Moderator
         $moderator = User::firstOrCreate(['email' => 'moderator@storpify.com'], [
             'name' => 'Content Moderator',
-            'password' => Hash::make('Storpify@2026!'),
+            'password' => Hash::make(\Illuminate\Support\Str::random(32)),
             'phone' => '01700000003',
             'role' => 'moderator',
             'status' => 'active',
@@ -123,7 +127,7 @@ class RolesAndPermissionsSeeder extends Seeder
         // Sample Customer
         $customer = User::firstOrCreate(['email' => 'customer@storpify.com'], [
             'name' => 'রাকিবুল হাসান (Rakibul Hasan)',
-            'password' => Hash::make('Storpify@2026!'),
+            'password' => Hash::make(\Illuminate\Support\Str::random(32)),
             'phone' => '01812345678',
             'role' => 'customer',
             'status' => 'active',

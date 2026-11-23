@@ -157,21 +157,20 @@ STORPIFY uses scheduled tasks for subscription expiry verification, newsletter d
 
 ---
 
-## 8. Step 7: Log In to the Administration Portal
+## 8. Step 7: Create Your Super Admin Account
 
-Access your admin dashboard at:
-`https://yourdomain.com/login`
+For security, hardcoded default admin passwords have been completely removed. You can create your custom Super Admin in either of two ways:
 
-### Default Production Administrative Accounts:
+### Option A: From Supabase Dashboard SQL Editor (Recommended)
+1. Open your **Supabase Dashboard** ➜ **SQL Editor**.
+2. Run the provided Super Admin creation SQL script (replace email and password with your desired values).
+3. The script automatically hashes the password using native Bcrypt and grants full Super Admin RBAC privileges.
 
-| Role | Email | Password | Permissions Scope |
-| :--- | :--- | :--- | :--- |
-| **Super Admin** | `admin@storpify.com` | `Storpify@2026!` | Full platform control, Staff RBAC, Payment numbers, System Gate |
-| **General Admin** | `manager@storpify.com` | `Storpify@2026!` | Products, Orders, Payments, CMS, Coupons |
-| **Moderator** | `moderator@storpify.com` | `Storpify@2026!` | Category-scoped product management, Pending approval |
-| **Customer** | `customer@storpify.com` | `Storpify@2026!` | Shopping storefront, Orders, Subscriptions, Downloads |
-
-> **IMPORTANT**: Upon initial login, Super Admin must change the default passwords under Customer Profile or Staff settings.
+### Option B: Via Hostinger SSH / Terminal
+```bash
+php artisan storpify:create-admin
+```
+Follow the interactive prompt to set your admin name, email, and password.
 
 ---
 
